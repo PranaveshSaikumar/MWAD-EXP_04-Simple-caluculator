@@ -46,9 +46,116 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+```
+Calc.jsx
+import { useState } from "react";
+import "../EXPS/Calc.css";
+
+export default function Calculator() {
+  const [value, setValue] = useState("");
+
+  const handleClick = (val) => {
+    setValue(value + val);
+  };
+
+  const calculate = () => {
+    try {
+      setValue(eval(value).toString());
+    } catch {
+      setValue("Error");
+    }
+  };
+
+  const clearDisplay = () => {
+    setValue("");
+  };
+
+  return (
+    <div className="calc-container">
+      <input className="display" type="text" value={value} readOnly />
+
+      <div className="buttons">
+        <button onClick={() => handleClick("7")}>7</button>
+        <button onClick={() => handleClick("8")}>8</button>
+        <button onClick={() => handleClick("9")}>9</button>
+        <button onClick={() => handleClick("/")}>/</button>
+
+        <button onClick={() => handleClick("4")}>4</button>
+        <button onClick={() => handleClick("5")}>5</button>
+        <button onClick={() => handleClick("6")}>6</button>
+        <button onClick={() => handleClick("*")}>*</button>
+
+        <button onClick={() => handleClick("1")}>1</button>
+        <button onClick={() => handleClick("2")}>2</button>
+        <button onClick={() => handleClick("3")}>3</button>
+        <button onClick={() => handleClick("-")}>-</button>
+
+        <button onClick={clearDisplay}>C</button>
+        <button onClick={() => handleClick("0")}>0</button>
+        <button onClick={calculate}>=</button>
+        <button onClick={() => handleClick("+")}>+</button>
+      </div>
+    </div>
+  );
+}
+```
+```
+Calc.css
+.calc-container {
+  width: 260px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f3f3f3;
+  box-shadow: 0px 0px 10px gray;
+}
+
+.display {
+  width: 100%;
+  height: 50px;
+  font-size: 22px;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: right;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  height: 45px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #ddd;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ccc;
+}
+```
+```
+App.jsx
+import Calculator from "./EXPS/Calc.jsx";
+
+export default function App() {
+  return (
+    <div>
+      <Calculator />
+    </div>
+  );
+}
+```
 
 
 ## OUTPUT
+
 
 
 ## RESULT
